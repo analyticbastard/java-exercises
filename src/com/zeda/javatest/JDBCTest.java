@@ -40,17 +40,30 @@ public class JDBCTest {
 		statement = connection.createStatement();
 		resultset = statement.executeQuery("SELECT * FROM iris");
 		
+		writeMetaData(resultset);
 		writeResultSet(resultset);
 		
 		close();
 	}
 	
+	private void writeMetaData(ResultSet resultSet) throws SQLException {
+		System.out.println("The columns in the table are: ");
+		System.out.println("Table: " + resultSet.getMetaData().getTableName(1));
+		for  (int i = 1; i<= resultSet.getMetaData().getColumnCount(); i++){
+			System.out.println("Column " +i  + " "+ resultSet.getMetaData().getColumnName(i));
+		}
+		for  (int i = 1; i<= resultSet.getMetaData().getColumnCount(); i++){
+			System.out.print(resultSet.getMetaData().getColumnName(i) + "\t");
+		}
+		System.out.println("");
+	}
+	
 	private void writeResultSet(ResultSet resultset) throws SQLException {
 		while (resultset.next()) {
-			int at1 = resultset.getInt(1);
-			int at2 = resultset.getInt("at2");
-			int at3 = resultset.getInt("at3");
-			int at4 = resultset.getInt("at4");
+			float at1 = resultset.getFloat(1);
+			float at2 = resultset.getFloat("at2");
+			float at3 = resultset.getFloat("at3");
+			float at4 = resultset.getFloat("at4");
 			String type = resultset.getString("type");
 			
 			String line = "" + at1 + "\t" + at2 + "\t" + at3 
