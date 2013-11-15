@@ -9,7 +9,8 @@ public class Main {
 		//JDBCTest.test();
 		//C2_LinkedList.test();
 		//C3_Stack.test();
-		C4_TreeGraph.test();
+		//C4_TreeGraph.test();
+		C5_Bit.test();
 	}
 
 }
